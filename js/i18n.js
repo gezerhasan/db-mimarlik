@@ -19,6 +19,7 @@ window.I18N = {
     'nav.reviews'     : 'Yorumlar',
     'nav.faq'         : 'SSS',
     'nav.cta'         : 'Keşif Randevusu',
+    'nav.ctaShort'    : 'Randevu',
 
     'loader.tag'      : 'Mimarlık · İç Mimarlık · İnşaat · Gayrimenkul',
 
@@ -266,6 +267,7 @@ window.I18N = {
     'nav.reviews'     : 'Reviews',
     'nav.faq'         : 'FAQ',
     'nav.cta'         : 'Book a Visit',
+    'nav.ctaShort'    : 'Book',
 
     'loader.tag'      : 'Architecture · Interiors · Construction · Real Estate',
 
@@ -513,6 +515,7 @@ window.I18N = {
     'nav.reviews'     : 'Отзывы',
     'nav.faq'         : 'Вопросы',
     'nav.cta'         : 'Записаться',
+    'nav.ctaShort'    : 'Запись',
 
     'loader.tag'      : 'Архитектура · Интерьер · Строительство · Недвижимость',
 

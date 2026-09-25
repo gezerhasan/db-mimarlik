@@ -200,6 +200,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .lang__menu button:hover{background:var(--bone-2)}
 .lang__menu button.is-on{background:var(--ink);color:var(--bone)}
 
+/* Mobilde "Keşif Randevusu" iki satıra kırılıp butonu şişiriyordu;
+   dar ekranda kısa metin gösterilir. */
+.cta-long{display:inline}
+.cta-short{display:none}
+@media (max-width:560px){
+  .cta-long{display:none}
+  .cta-short{display:inline}
+  .hdr .btn--sm{padding:.7em 1.05em;white-space:nowrap}
+}
+
 .burger{display:none;width:34px;height:34px;position:relative}
 .burger i{position:absolute;left:7px;width:20px;height:1.5px;background:currentColor;transition:.4s var(--e)}
 .burger i:first-child{top:14px}.burger i:last-child{top:20px}
@@ -225,7 +235,13 @@ body.is-drawer .drawer__nav a{opacity:1;transform:none;transition:.7s var(--e) c
 .hero__canvas,.hero__fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero__canvas{opacity:0;transition:opacity .9s var(--e)}
 .hero__canvas.is-on{opacity:1}
-.hero__fallback{transform:scale(1.06);animation:kb 22s ease-in-out infinite alternate}
+.hero__fallback{object-position:50% 50%;transform:scale(1.06);
+  animation:kb 22s ease-in-out infinite alternate}
+/* Dar ekranda canvas'ın açılış odağıyla aynı yere yaslanır. */
+@media (max-width:760px){
+  .hero__fallback{object-position:30% 50%}
+  .scrub__fallback{object-position:42% 50%}
+}
 @keyframes kb{to{transform:scale(1.16) translate3d(-1.5%,-1%,0)}}
 /* Başlık parlak cephelerin üzerine de düşebildiği için perde sol-alta
    ağırlıklı ve yatayda da koyulaştırıcı — metin her karede okunur kalsın. */
@@ -244,7 +260,11 @@ body.is-drawer .drawer__nav a{opacity:1;transform:none;transition:.7s var(--e) c
   font-size:clamp(2.7rem,8.4vw,8rem);font-weight:200;line-height:.92;letter-spacing:-.045em;
   margin:.28em 0 .46em;
 }
-.hero__title .line{display:block;overflow:hidden}
+/* Maske kutusu satır kutusu kadar olduğu için ç/ğ/g/ş/y harflerinin
+   alt uzantıları kesiliyordu; kutu aşağı doğru büyütülüp aynı kadar
+   negatif boşlukla geri alınıyor — düzen kaymadan alt boşluk açılıyor. */
+.hero__title .line{display:block;overflow:hidden;
+  padding-bottom:.16em;margin-bottom:-.16em}
 .hero__title .line i{display:block;font-style:normal}
 .js .hero__title .line i{transform:translateY(105%)}
 .hero__title .line:last-child i{color:var(--bronze-l)}
@@ -761,7 +781,8 @@ body.is-drawer .drawer__nav a{opacity:1;transform:none;transition:.7s var(--e) c
 /* Başlangıç durumları YALNIZCA JS çalışıyorsa uygulanır; aksi halde
    script yüklenemezse sayfa boş görünürdü. */
 .js .reveal,.js .reveal-card{opacity:0}
-.split .w{display:inline-block;overflow:hidden;vertical-align:bottom}
+.split .w{display:inline-block;overflow:hidden;vertical-align:bottom;
+  padding-bottom:.16em;margin-bottom:-.16em}
 .split .w>i{display:inline-block;font-style:normal}
 .js .split .w>i{transform:translateY(105%)}
 

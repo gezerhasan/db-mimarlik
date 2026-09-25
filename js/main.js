@@ -24,11 +24,11 @@ const PROJECTS = [
 
 /* ══════════════════════════════════════════════════════════ 2 · I18N ══ */
 const LANGS = ['tr', 'en', 'ru'];
+/* Varsayılan her zaman Türkçe. Tarayıcı dili dikkate ALINMAZ — site
+   Türkçe açılmalı; başka dil yalnızca ziyaretçi menüden seçerse gelir. */
 let LANG = (() => {
   const saved = localStorage.getItem('db-lang');
-  if (LANGS.includes(saved)) return saved;
-  const nav = (navigator.language || 'tr').slice(0, 2).toLowerCase();
-  return LANGS.includes(nav) ? nav : 'tr';
+  return LANGS.includes(saved) ? saved : 'tr';
 })();
 
 const t = k => (window.I18N[LANG] && window.I18N[LANG][k]) ?? window.I18N.tr[k] ?? '';
@@ -240,6 +240,8 @@ function makeScrub(o) {
     return null;
   };
 
+  let prog = 0;   // odak noktasi ilerlemeye gore kayabilsin diye tutulur
+
   const draw = i => {
     const img = nearest(i);
     if (!img || !img.complete || !img.naturalWidth) return;
@@ -251,7 +253,13 @@ function makeScrub(o) {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const s = Math.max(w / img.naturalWidth, h / img.naturalHeight);
     const dw = img.naturalWidth * s, dh = img.naturalHeight * s;
-    ctx.drawImage(img, (w - dw) / 2, (h - dh) / 2, dw, dh);
+
+    /* Dar (dikey) ekranda 16:9 kare ortadan kırpılınca hero'da iki villanın
+       ARASI kalıyordu. `focus` ilerlemeye göre yatay odak noktası verir;
+       kare kaba sığdığında (masaüstü) dw==w olur ve kelepçe bunu etkisiz kılar. */
+    const fx = o.focus ? o.focus(prog) : .5;
+    const ox = Math.max(w - dw, Math.min(0, w / 2 - fx * dw));
+    ctx.drawImage(img, ox, (h - dh) / 2, dw, dh);
   };
 
   const load = i => new Promise(res => {
@@ -302,7 +310,9 @@ function makeScrub(o) {
       onUpdate(self) {
         if (!ready) return;
         const i = Math.min(COUNT - 1, Math.round(self.progress * (COUNT - 1)));
-        if (i !== cur) { cur = i; draw(i); }
+        const moved = o.focus && Math.abs(self.progress - prog) > .004;
+        prog = self.progress;
+        if (i !== cur || moved) { cur = i; draw(i); }
       }
     }
   });
@@ -317,6 +327,8 @@ function scrubScenes() {
   makeScrub({
     section: '#hero', canvas: '#heroCanvas', fallback: '#heroFallback',
     count: 65, lg: 'assets/frames/lg', sm: 'assets/frames/sm', end: '+=210%',
+    // Açılışta sol villaya yaslan, kamera yaklaştıkça ortaya dön.
+    focus: p => .30 + .20 * Math.min(1, p / .5),
     build(tl) {
       tl.to('.hero__scroll',  { opacity: 0, duration: .10, ease: 'none' }, 0)
         .to('.hero__content', { yPercent: -16, opacity: 0, duration: .55, ease: 'none' }, 0)
