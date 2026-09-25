@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title data-i18n="meta.title">DB Mimarlık İnşaat — Antalya Mimari Proje, İç Mimarlık ve Anahtar Teslim İnşaat</title>
+<meta name="description" data-i18n-attr="content:meta.desc" content="Döşemealtı Antalya’da mimari proje, iç mimarlık, anahtar teslim inşaat ve gayrimenkul danışmanlığı.">
+<meta name="theme-color" content="#0C0C0D">
+
+<meta property="og:type" content="website">
+<meta property="og:title" data-i18n-attr="content:meta.title" content="DB Mimarlık İnşaat">
+<meta property="og:description" data-i18n-attr="content:meta.desc" content="">
+<meta property="og:image" content="assets/img/hero-twin.webp">
+
+<link rel="icon" href="assets/logo/logo-dark.png">
+<link rel="apple-touch-icon" href="assets/logo/logo-dark.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Cormorant:ital,wght@0,300..600;1,300..500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/hero-poster.webp">
+<link rel="stylesheet" href="css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["GeneralContractor","ArchitecturalService"],
+  "name": "DB Mimarlık İnşaat",
+  "image": "assets/img/hero-twin.webp",
+  "telephone": "+905308998060",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bahçeyaka Mah. Atatürk Cad. No:298 Kat 4 Daire 14",
+    "addressLocality": "Döşemealtı",
+    "addressRegion": "Antalya",
+    "postalCode": "07190",
+    "addressCountry": "TR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 37.0022, "longitude": 30.6178 },
+  "openingHours": "Mo-Sa 09:00-20:00",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "22", "bestRating": "5" },
+  "sameAs": ["https://instagram.com"],
+  "areaServed": "Antalya",
+  "knowsAbout": ["Mimari proje","İç mimarlık","Anahtar teslim inşaat","Kat karşılığı","Gayrimenkul danışmanlığı"]
+}
+</script>
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════════════ LOADER ══ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <svg class="loader__mark" viewBox="0 0 100 100" aria-hidden="true">
+      <path class="lm-frame" d="M4 26 V4 H40 M60 4 H96 V26 M96 74 V96 H60 M40 96 H4 V74"/>
+      <circle class="lm-d" cx="34" cy="60" r="22"/>
+      <circle class="lm-b" cx="66" cy="60" r="22"/>
+      <path   class="lm-stem" d="M50 18 V62"/>
+    </svg>
+    <div class="loader__tag" data-i18n="loader.tag"></div>
+    <div class="loader__bar"><i id="loaderBar"></i></div>
+  </div>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="scrollbar" aria-hidden="true"><i id="scrollProg"></i></div>
+
+<!-- ══════════════════════════════════════════════ HEADER ══ -->
+<header class="hdr" id="hdr">
+  <a class="hdr__logo" href="#top" aria-label="DB Mimarlık">
+    <img src="assets/logo/logo-light.png" alt="DB Mimarlık" class="hdr__logoImg">
+    <span class="hdr__logoTxt">DB&nbsp;Mimarlık</span>
+  </a>
+
+  <nav class="hdr__nav" aria-label="Ana menü">
+    <a href="#services"  data-i18n="nav.services"></a>
+    <a href="#proof"     data-i18n="nav.proof"></a>
+    <a href="#process"   data-i18n="nav.process"></a>
+    <a href="#projects"  data-i18n="nav.projects"></a>
+    <a href="#team"      data-i18n="nav.team"></a>
+    <a href="#reviews"   data-i18n="nav.reviews"></a>
+  </nav>
+
+  <div class="hdr__right">
+    <div class="lang" id="lang">
+      <button class="lang__btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+        <span id="langCur">TR</span>
+        <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+      </button>
+      <div class="lang__menu" id="langMenu" role="menu">
+        <button role="menuitem" data-lang="tr"><b>TR</b> Türkçe</button>
+        <button role="menuitem" data-lang="en"><b>EN</b> English</button>
+        <button role="menuitem" data-lang="ru"><b>RU</b> Русский</button>
+      </div>
+    </div>
+    <a href="#book" class="btn btn--sm btn--solid magnetic" data-i18n="nav.cta"></a>
+    <button class="burger" id="burger" aria-label="Menü"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <nav class="drawer__nav">
+    <a href="#services" data-i18n="nav.services"></a>
+    <a href="#proof"    data-i18n="nav.proof"></a>
+    <a href="#process"  data-i18n="nav.process"></a>
+    <a href="#projects" data-i18n="nav.projects"></a>
+    <a href="#team"     data-i18n="nav.team"></a>
+    <a href="#reviews"  data-i18n="nav.reviews"></a>
+    <a href="#faq"      data-i18n="nav.faq"></a>
+  </nav>
+  <a href="#book" class="btn btn--solid drawer__cta" data-i18n="nav.cta"></a>
+  <div class="drawer__foot">
+    <a href="tel:+905308998060">0530 899 80 60</a>
+    <span>Döşemealtı · Antalya</span>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ════════════════════════════════════════════════ HERO ══ -->
+<section class="hero" id="hero">
+  <div class="hero__stage">
+    <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+    <img class="hero__fallback" id="heroFallback" src="assets/img/hero-poster.webp"
+         alt="DB Mimarlık tarafından tasarlanan havuzlu ikiz villa projesi">
+    <div class="hero__veil"></div>
+  </div>
+
+  <div class="hero__content">
+    <p class="eyebrow eyebrow--light reveal" data-i18n="hero.eyebrow"></p>
+    <h1 class="hero__title">
+      <span class="line"><i data-i18n="hero.l1"></i></span>
+      <span class="line"><i data-i18n="hero.l2"></i></span>
+      <span class="line"><i data-i18n="hero.l3"></i></span>
+    </h1>
+    <p class="hero__lead reveal" data-i18n="hero.lead"></p>
+    <div class="hero__actions reveal">
+      <a href="#book" class="btn btn--solid btn--lg magnetic" data-i18n="hero.cta1"></a>
+      <a href="#projects" class="btn btn--ghost btn--lg magnetic" data-i18n="hero.cta2"></a>
+    </div>
+    <div class="hero__rate reveal">
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <span data-i18n="hero.rating"></span>
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span data-i18n="hero.scroll"></span><i></i>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ INTERIOR ══ -->
+<!-- Hero'nun dışarıdan cepheye doğru gelen hareketi burada içeride devam eder. -->
+<section class="scrub" id="interior">
+  <div class="scrub__stage">
+    <canvas class="scrub__canvas" id="intCanvas" aria-hidden="true"></canvas>
+    <img class="scrub__fallback" id="intFallback" src="assets/img/int-living.webp"
+         alt="DB Mimarlık iç mimari tasarımı — havuza açılan oturma alanı">
+    <div class="scrub__veil"></div>
+  </div>
+  <div class="scrub__content">
+    <p class="eyebrow eyebrow--light reveal" data-i18n="ins.eyebrow"></p>
+    <h2 class="scrub__title split" data-i18n="ins.title"></h2>
+    <p class="scrub__lead reveal" data-i18n="ins.lead"></p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ STRIP ══ -->
+<div class="strip" aria-hidden="true">
+  <div class="strip__track" id="stripTrack"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ SERVICES ══ -->
+<!-- Başlık, dört uzmanlığın tek karede toplandığı tasarım masası
+     animasyonunun ÜZERİNDE durur — hero ve iç mekân sahneleriyle aynı kurgu.
+     Metin sağda: masadaki nesneler solda, sağ taraf boş ahşap yüzey. -->
+<section class="scrub scrub--right" id="services">
+  <div class="scrub__stage">
+    <canvas class="scrub__canvas" id="deskCanvas" aria-hidden="true"></canvas>
+    <img class="scrub__fallback" id="deskFallback" src="assets/img/desk.webp"
+         alt="Mimari proje, malzeme örnekleri, maket ve 3D görselin bir arada olduğu tasarım masası">
+    <div class="scrub__veil"></div>
+  </div>
+  <div class="scrub__content">
+    <!-- Masa dokusu hareketli olduğu için yazı buzlu cam panelin üzerinde durur. -->
+    <div class="scrub__panel">
+      <p class="eyebrow eyebrow--light reveal" data-i18n="svc.eyebrow"></p>
+      <h2 class="scrub__title split" data-i18n="svc.title"></h2>
+      <p class="scrub__lead reveal" data-i18n="svc.lead"></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--light sec--glass" id="services-detail" style="--secbg:url(assets/img/bg-kitchen.webp)">
+  <div class="sec__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="svc">
+      <article class="svc__card reveal-card" data-n="01">
+        <div class="svc__num">01</div>
+        <h3 data-i18n="svc.1.t"></h3>
+        <p data-i18n="svc.1.d"></p>
+        <ul><li data-i18n="svc.1.m1"></li><li data-i18n="svc.1.m2"></li><li data-i18n="svc.1.m3"></li></ul>
+      </article>
+      <article class="svc__card reveal-card" data-n="02">
+        <div class="svc__num">02</div>
+        <h3 data-i18n="svc.2.t"></h3>
+        <p data-i18n="svc.2.d"></p>
+        <ul><li data-i18n="svc.2.m1"></li><li data-i18n="svc.2.m2"></li><li data-i18n="svc.2.m3"></li></ul>
+      </article>
+      <article class="svc__card reveal-card" data-n="03">
+        <div class="svc__num">03</div>
+        <h3 data-i18n="svc.3.t"></h3>
+        <p data-i18n="svc.3.d"></p>
+        <ul><li data-i18n="svc.3.m1"></li><li data-i18n="svc.3.m2"></li><li data-i18n="svc.3.m3"></li></ul>
+      </article>
+      <article class="svc__card reveal-card" data-n="04">
+        <div class="svc__num">04</div>
+        <h3 data-i18n="svc.4.t"></h3>
+        <p data-i18n="svc.4.d"></p>
+        <ul><li data-i18n="svc.4.m1"></li><li data-i18n="svc.4.m2"></li><li data-i18n="svc.4.m3"></li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ PROOF ══ -->
+<section class="sec sec--dark" id="proof">
+  <div class="wrap">
+    <header class="sec__head sec__head--center sec__head--glass">
+      <p class="eyebrow eyebrow--light reveal" data-i18n="proof.eyebrow"></p>
+      <h2 class="h2 split" data-i18n="proof.title"></h2>
+      <p class="lead lead--light reveal" data-i18n="proof.lead"></p>
+    </header>
+
+    <div class="proof">
+      <figure class="proof__item reveal-card">
+        <div class="ba" data-ba>
+          <img class="ba__after"  src="assets/img/pairA-built.webp"  alt="Tamamlanan villa" draggable="false">
+          <div class="ba__beforeWrap"><img class="ba__before" src="assets/img/pairA-render.webp" alt="Villanın 3D görseli" draggable="false"></div>
+          <div class="ba__handle"><i></i><span class="ba__grip" aria-hidden="true"></span></div>
+          <span class="ba__tag ba__tag--l" data-i18n="proof.before"></span>
+          <span class="ba__tag ba__tag--r" data-i18n="proof.after"></span>
+          <span class="ba__hint" data-i18n="proof.drag"></span>
+          <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="3D görsel / tamamlanan yapı karşılaştırması">
+        </div>
+        <figcaption>
+          <h3 data-i18n="proof.a.t"></h3>
+          <p data-i18n="proof.a.d"></p>
+        </figcaption>
+      </figure>
+
+      <figure class="proof__item reveal-card">
+        <div class="ba" data-ba>
+          <img class="ba__after"  src="assets/img/pairB-built.webp"  alt="Tamamlanan giriş cephesi" draggable="false">
+          <div class="ba__beforeWrap"><img class="ba__before" src="assets/img/pairB-render.webp" alt="Giriş cephesinin 3D görseli" draggable="false"></div>
+          <div class="ba__handle"><i></i><span class="ba__grip" aria-hidden="true"></span></div>
+          <span class="ba__tag ba__tag--l" data-i18n="proof.before"></span>
+          <span class="ba__tag ba__tag--r" data-i18n="proof.after"></span>
+          <span class="ba__hint" data-i18n="proof.drag"></span>
+          <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="3D görsel / tamamlanan yapı karşılaştırması">
+        </div>
+        <figcaption>
+          <h3 data-i18n="proof.b.t"></h3>
+          <p data-i18n="proof.b.d"></p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="stats">
+      <div class="stat reveal-card"><b class="stat__n" data-count data-i18n="stats.1.n"></b><span data-i18n="stats.1.l"></span></div>
+      <div class="stat reveal-card"><b class="stat__n" data-count data-i18n="stats.2.n"></b><span data-i18n="stats.2.l"></span></div>
+      <div class="stat reveal-card"><b class="stat__n" data-count data-i18n="stats.3.n"></b><span data-i18n="stats.3.l"></span></div>
+      <div class="stat reveal-card"><b class="stat__n" data-count data-i18n="stats.4.n"></b><span data-i18n="stats.4.l"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ PROCESS ══ -->
+<section class="sec sec--light sec--tight sec--glass" id="process" style="--secbg:url(assets/img/bg-living.webp)">
+  <div class="sec__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <header class="sec__head sec__head--glass">
+      <p class="eyebrow reveal" data-i18n="process.eyebrow"></p>
+      <h2 class="h2 split" data-i18n="process.title"></h2>
+      <p class="lead reveal" data-i18n="process.lead"></p>
+    </header>
+  </div>
+
+  <div class="rail" id="rail">
+    <div class="rail__track" id="railTrack">
+      <article class="step"><span class="step__n">01</span><h3 data-i18n="process.1.t"></h3><p data-i18n="process.1.d"></p><b data-i18n="process.1.o"></b></article>
+      <article class="step"><span class="step__n">02</span><h3 data-i18n="process.2.t"></h3><p data-i18n="process.2.d"></p><b data-i18n="process.2.o"></b></article>
+      <article class="step"><span class="step__n">03</span><h3 data-i18n="process.3.t"></h3><p data-i18n="process.3.d"></p><b data-i18n="process.3.o"></b></article>
+      <article class="step"><span class="step__n">04</span><h3 data-i18n="process.4.t"></h3><p data-i18n="process.4.d"></p><b data-i18n="process.4.o"></b></article>
+      <article class="step"><span class="step__n">05</span><h3 data-i18n="process.5.t"></h3><p data-i18n="process.5.d"></p><b data-i18n="process.5.o"></b></article>
+      <article class="step"><span class="step__n">06</span><h3 data-i18n="process.6.t"></h3><p data-i18n="process.6.d"></p><b data-i18n="process.6.o"></b></article>
+    </div>
+  </div>
+  <div class="wrap"><div class="rail__bar"><i id="railBar"></i></div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════ PROJECTS ══ -->
+<section class="sec sec--bone" id="projects">
+  <div class="wrap">
+    <header class="sec__head sec__head--glass">
+      <p class="eyebrow reveal" data-i18n="projects.eyebrow"></p>
+      <h2 class="h2 split" data-i18n="projects.title"></h2>
+      <p class="lead reveal" data-i18n="projects.lead"></p>
+    </header>
+    <div class="grid" id="projGrid"></div>
+  </div>
+</section>
+
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal__bg" data-close></div>
+  <div class="modal__panel">
+    <button class="modal__x" data-close aria-label="Kapat"><svg viewBox="0 0 20 20"><path d="M4 4l12 12M16 4L4 16"/></svg></button>
+    <div class="modal__media" id="mdMedia"></div>
+    <div class="modal__body">
+      <h3 id="mdTitle"></h3>
+      <div class="modal__meta" id="mdMeta"></div>
+      <p id="mdDesc"></p>
+      <a href="#book" class="btn btn--solid magnetic" data-close data-i18n="footer.cta"></a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ TEAM ══ -->
+<section class="sec sec--dark" id="team">
+  <div class="wrap">
+    <header class="sec__head sec__head--glass">
+      <p class="eyebrow eyebrow--light reveal" data-i18n="team.eyebrow"></p>
+      <h2 class="h2 split" data-i18n="team.title"></h2>
+      <p class="lead lead--light reveal" data-i18n="team.lead"></p>
+    </header>
+
+    <div class="team">
+      <article class="mem reveal-card">
+        <div class="mem__mark" aria-hidden="true"><span>D</span><i></i></div>
+        <h3 data-i18n="team.1.n"></h3>
+        <p class="mem__role" data-i18n="team.1.r"></p>
+        <p class="mem__bio" data-i18n="team.1.d"></p>
+      </article>
+      <article class="mem reveal-card">
+        <div class="mem__mark" aria-hidden="true"><span>B</span><i></i></div>
+        <h3 data-i18n="team.2.n"></h3>
+        <p class="mem__role" data-i18n="team.2.r"></p>
+        <p class="mem__bio" data-i18n="team.2.d"></p>
+      </article>
+    </div>
+    <p class="team__badge reveal"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5" r="3"/><path d="M8 8v6M5 11h6"/></svg><span data-i18n="team.badge"></span></p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ REVIEWS ══ -->
+<section class="sec sec--light" id="reviews">
+  <div class="wrap">
+    <header class="sec__head sec__head--center sec__head--glass">
+      <p class="eyebrow reveal" data-i18n="rev.eyebrow"></p>
+      <h2 class="h2 split" data-i18n="rev.title"></h2>
+      <p class="lead reveal" data-i18n="rev.lead"></p>
+    </header>
+  </div>
+  <div class="revRows" id="revRows"></div>
+  <div class="wrap" style="text-align:center">
+    <a class="link-arrow reveal" target="_blank" rel="noopener"
+       href="https://www.google.com/search?q=DB+Mimarl%C4%B1k+%C4%B0n%C5%9Faat+D%C3%B6%C5%9Femealt%C4%B1">
+      <span data-i18n="rev.all"></span>
+      <svg viewBox="0 0 20 12" aria-hidden="true"><path d="M0 6h18M13 1l5 5-5 5"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════ FAQ ══ -->
+<section class="sec sec--bone sec--glass" id="faq" style="--secbg:url(assets/img/bg-kitchen.webp)">
+  <div class="sec__bg" aria-hidden="true"></div>
+  <div class="wrap wrap--narrow">
+    <header class="sec__head sec__head--glass">
+      <p class="eyebrow reveal" data-i18n="faq.eyebrow"></p>
+      <h2 class="h2 split" data-i18n="faq.title"></h2>
+    </header>
+    <div class="acc" id="acc">
+      <div class="acc__i reveal-card"><button class="acc__q"><span data-i18n="faq.1.q"></span><i></i></button><div class="acc__a"><p data-i18n="faq.1.a"></p></div></div>
+      <div class="acc__i reveal-card"><button class="acc__q"><span data-i18n="faq.2.q"></span><i></i></button><div class="acc__a"><p data-i18n="faq.2.a"></p></div></div>
+      <div class="acc__i reveal-card"><button class="acc__q"><span data-i18n="faq.3.q"></span><i></i></button><div class="acc__a"><p data-i18n="faq.3.a"></p></div></div>
+      <div class="acc__i reveal-card"><button class="acc__q"><span data-i18n="faq.4.q"></span><i></i></button><div class="acc__a"><p data-i18n="faq.4.a"></p></div></div>
+      <div class="acc__i reveal-card"><button class="acc__q"><span data-i18n="faq.5.q"></span><i></i></button><div class="acc__a"><p data-i18n="faq.5.a"></p></div></div>
+      <div class="acc__i reveal-card"><button class="acc__q"><span data-i18n="faq.6.q"></span><i></i></button><div class="acc__a"><p data-i18n="faq.6.a"></p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ BOOK ══ -->
+<section class="sec sec--dark sec--book" id="book">
+  <div class="wrap">
+    <div class="book">
+
+      <div class="book__intro">
+        <p class="eyebrow eyebrow--light reveal" data-i18n="book.eyebrow"></p>
+        <h2 class="h2 split" data-i18n="book.title"></h2>
+        <p class="lead lead--light reveal" data-i18n="book.lead"></p>
+        <ul class="book__list reveal">
+          <li data-i18n="book.b1"></li><li data-i18n="book.b2"></li>
+          <li data-i18n="book.b3"></li><li data-i18n="book.b4"></li>
+        </ul>
+        <div class="book__pills reveal">
+          <span class="pill pill--accent" data-i18n="book.free"></span>
+          <span class="pill" data-i18n="book.dur"></span>
+          <span class="pill" data-i18n="book.place"></span>
+        </div>
+      </div>
+
+      <div class="book__panel reveal-card">
+        <ol class="steps" id="bookSteps">
+          <li class="is-on"><b>1</b><span data-i18n="book.step1"></span></li>
+          <li><b>2</b><span data-i18n="book.step2"></span></li>
+          <li><b>3</b><span data-i18n="book.step3"></span></li>
+        </ol>
+
+        <div class="book__stage" id="bookStage">
+
+          <!-- calendar -->
+          <div class="cal" id="cal">
+            <div class="cal__head">
+              <button class="cal__nav" id="calPrev" aria-label="Önceki ay"><svg viewBox="0 0 8 12"><path d="M7 1L2 6l5 5"/></svg></button>
+              <div class="cal__month" id="calMonth"></div>
+              <button class="cal__nav" id="calNext" aria-label="Sonraki ay"><svg viewBox="0 0 8 12"><path d="M1 1l5 5-5 5"/></svg></button>
+            </div>
+            <div class="cal__dows" id="calDows"></div>
+            <div class="cal__grid" id="calGrid"></div>
+            <p class="cal__note" data-i18n="book.pickdate"></p>
+          </div>
+
+          <!-- times -->
+          <div class="slots" id="slots" hidden>
+            <button class="back" id="toCal"><svg viewBox="0 0 8 12"><path d="M7 1L2 6l5 5"/></svg><span data-i18n="book.back"></span></button>
+            <p class="slots__date" id="slotsDate"></p>
+            <div class="slots__grid" id="slotsGrid"></div>
+          </div>
+
+          <!-- form -->
+          <form class="bform" id="bform" hidden novalidate>
+            <button type="button" class="back" id="toSlots"><svg viewBox="0 0 8 12"><path d="M7 1L2 6l5 5"/></svg><span data-i18n="book.back"></span></button>
+            <p class="bform__when" id="bformWhen"></p>
+
+            <label class="fld"><span data-i18n="book.name"></span>
+              <input name="name" type="text" autocomplete="name" required></label>
+            <label class="fld"><span data-i18n="book.phone"></span>
+              <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="05__ ___ __ __"></label>
+            <label class="fld"><span data-i18n="book.email"></span>
+              <input name="email" type="email" autocomplete="email"></label>
+            <label class="fld"><span data-i18n="book.service"></span>
+              <select name="service" required>
+                <option value="" data-i18n="book.s0"></option>
+                <option data-i18n="book.s1"></option><option data-i18n="book.s2"></option>
+                <option data-i18n="book.s3"></option><option data-i18n="book.s4"></option>
+                <option data-i18n="book.s5"></option>
+              </select></label>
+
+            <fieldset class="fld fld--radio">
+              <legend data-i18n="book.land"></legend>
+              <div class="chips">
+                <label><input type="radio" name="land" value="1" checked><span data-i18n="book.land1"></span></label>
+                <label><input type="radio" name="land" value="2"><span data-i18n="book.land2"></span></label>
+                <label><input type="radio" name="land" value="3"><span data-i18n="book.land3"></span></label>
+              </div>
+            </fieldset>
+
+            <label class="fld fld--full"><span data-i18n="book.note"></span>
+              <textarea name="note" rows="3"></textarea></label>
+
+            <button type="submit" class="btn btn--solid btn--lg btn--block magnetic" data-i18n="book.submit"></button>
+          </form>
+
+          <!-- success -->
+          <div class="done" id="done" hidden>
+            <svg class="done__tick" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 15-16"/></svg>
+            <h3 data-i18n="book.okTitle"></h3>
+            <div class="done__card" id="doneCard"></div>
+            <p data-i18n="book.okLead"></p>
+            <div class="done__acts">
+              <a class="btn btn--solid magnetic" href="tel:+905308998060" data-i18n="book.okCall"></a>
+              <a class="btn btn--ghost magnetic" id="waLink" target="_blank" rel="noopener" data-i18n="book.okWa"></a>
+            </div>
+            <button class="link-arrow link-arrow--sm" id="again"><span data-i18n="book.again"></span></button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ CONTACT ══ -->
+<section class="sec sec--light sec--glass" id="contact" style="--secbg:url(assets/img/bg-living.webp)">
+  <div class="sec__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <header class="sec__head sec__head--glass">
+      <p class="eyebrow reveal" data-i18n="contact.eyebrow"></p>
+      <h2 class="h2 split" data-i18n="contact.title"></h2>
+    </header>
+
+    <div class="ct">
+      <div class="ct__info">
+        <div class="ct__blk reveal"><h4 data-i18n="contact.addr"></h4><p data-i18n="contact.addrV"></p>
+          <a class="link-arrow link-arrow--sm" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&query=DB+Mimarl%C4%B1k+%C4%B0n%C5%9Faat+Bah%C3%A7eyaka+Atat%C3%BCrk+Cd+298+D%C3%B6%C5%9Femealt%C4%B1+Antalya">
+            <span data-i18n="contact.dir"></span>
+            <svg viewBox="0 0 20 12" aria-hidden="true"><path d="M0 6h18M13 1l5 5-5 5"/></svg></a>
+        </div>
+        <div class="ct__blk reveal"><h4 data-i18n="contact.phone"></h4>
+          <p><a class="big-link" href="tel:+905308998060">0530 899 80 60</a></p></div>
+        <div class="ct__blk reveal"><h4 data-i18n="contact.hours"></h4><p data-i18n="contact.hoursV"></p></div>
+        <div class="ct__blk reveal"><h4 data-i18n="contact.social"></h4>
+          <p><a class="big-link" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></p></div>
+      </div>
+      <div class="ct__map reveal-card">
+        <iframe title="DB Mimarlık konum" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=Bah%C3%A7eyaka%20Atat%C3%BCrk%20Cd%20No%3A298%20D%C3%B6%C5%9Femealt%C4%B1%20Antalya&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════ FOOTER ══ -->
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__top">
+      <div class="ftr__brand">
+        <img src="assets/logo/logo-light.png" alt="DB Mimarlık">
+        <p data-i18n="footer.tag"></p>
+      </div>
+      <div class="ftr__cols">
+        <div><h5 data-i18n="footer.nav"></h5>
+          <a href="#services" data-i18n="nav.services"></a><a href="#projects" data-i18n="nav.projects"></a>
+          <a href="#team" data-i18n="nav.team"></a><a href="#faq" data-i18n="nav.faq"></a></div>
+        <div><h5 data-i18n="footer.svc"></h5>
+          <a href="#services" data-i18n="svc.1.t"></a><a href="#services" data-i18n="svc.2.t"></a>
+          <a href="#services" data-i18n="svc.3.t"></a><a href="#services" data-i18n="svc.4.t"></a></div>
+        <div><h5 data-i18n="footer.contact"></h5>
+          <a href="tel:+905308998060">0530 899 80 60</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+          <span>Döşemealtı / Antalya</span></div>
+      </div>
+    </div>
+    <a href="#book" class="ftr__cta magnetic">
+      <span data-i18n="footer.cta"></span>
+      <svg viewBox="0 0 20 12" aria-hidden="true"><path d="M0 6h18M13 1l5 5-5 5"/></svg>
+    </a>
+    <div class="ftr__bot">
+      <span>© <b id="yr"></b> DB Mimarlık İnşaat. <span data-i18n="footer.rights"></span></span>
+      <span class="ftr__owned" data-i18n="footer.owned"></span>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

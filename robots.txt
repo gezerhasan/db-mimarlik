@@ -1,0 +1,4 @@
+# Bu site su an on-izleme/demo adresinde yayinda.
+# Gercek alan adina tasindiginda BU DOSYAYI SILIN.
+User-agent: *
+Disallow: /
